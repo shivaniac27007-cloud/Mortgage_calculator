@@ -72,21 +72,11 @@ st.subheader("Repayments")
 # Display key metrics in three columns
 col1, col2, col3 = st.columns(3)
 
-col1.metric(
-    label="Monthly Repayments",
-    value=f"${monthly_payment:,.2f}"
-)
+st.title("Home Loan EMI Calculator")
 
-col2.metric(
-    label="Total Repayments",
-    value=f"${total_payments:,.0f}"
-)
-
-col3.metric(
-    label="Total Interest",
-    value=f"${total_interest:,.0f}"
-)
-
+st.metric("Monthly EMI", f"₹{monthly_payment:,.2f}")
+st.metric("Total Amount Payable", f"₹{total_payments:,.0f}")
+st.metric("Total Interest Payable", f"₹{total_interest:,.0f}")
 
 # PAYMENT SCHEDULE CALCULATION
 
@@ -146,4 +136,5 @@ payments_df = df[["Year", "Remaining Balance"]].groupby("Year").min()
 
 # Display line chart showing loan balance reducing over time
 st.line_chart(payments_df)
+
 
